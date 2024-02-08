@@ -18,7 +18,7 @@ export const Banner = () => {
       in={isSuccess}
       unmountOnExit
       appear={true}
-      timeout={2000}
+      timeout={20000}
       easing={'cubic-bezier(0.32, 0, 0.67, 0)'}
     >
       <div
