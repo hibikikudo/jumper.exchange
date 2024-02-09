@@ -1,4 +1,4 @@
-import type { CSSObject } from '@mui/material';
+import type { SxProps, Theme } from '@mui/material';
 import type { ReactNode } from 'react';
 import { type PropsWithChildren } from 'react';
 import {
@@ -10,7 +10,7 @@ type ButtonVariant = 'primary' | 'secondary' | 'transparent';
 
 interface ButtonProbs {
   variant: ButtonVariant;
-  styles?: CSSObject;
+  styles?: SxProps<Theme>;
   id?: string;
   fullWidth?: boolean;
   muiVariant?: 'text' | 'outlined' | 'contained';
