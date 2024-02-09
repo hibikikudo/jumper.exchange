@@ -1,4 +1,9 @@
-import type { Breakpoint, CSSObject } from '@mui/material/styles';
+import type {
+  Breakpoint,
+  CSSObject,
+  SxProps,
+  Theme,
+} from '@mui/material/styles';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { MenuDesktop, MenuMobile } from '.';
@@ -9,7 +14,7 @@ interface MenuProps {
   handleClose: (event: MouseEvent | TouchEvent) => void;
   setOpen: (open: boolean, anchorRef: any) => void;
   cardsLayout?: boolean;
-  styles?: CSSObject;
+  styles?: SxProps<Theme>;
   open: boolean;
   transformOrigin?: string;
   children: any;

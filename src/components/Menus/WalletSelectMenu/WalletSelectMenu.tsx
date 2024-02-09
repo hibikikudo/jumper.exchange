@@ -1,4 +1,4 @@
-import type { Breakpoint, CSSObject } from '@mui/material';
+import type { Breakpoint, CSSObject, SxProps, Theme } from '@mui/material';
 import { Typography, darken } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
@@ -109,22 +109,23 @@ export const WalletSelectMenu = ({ handleClose, open }: MenuProps) => {
               key={`${el.label}-${index}`}
               triggerSubMenu={MenuKeys.WalletSelect}
               showButton={false}
-              styles={{
-                borderRadius: '72px',
-                backgroundColor:
-                  theme.palette.mode === 'dark'
-                    ? getContrastAlphaColor(theme, '12%')
-                    : getContrastAlphaColor(theme, '4%'),
-
-                '&:hover': {
+              styles={
+                {
+                  borderRadius: '72px',
                   backgroundColor:
                     theme.palette.mode === 'dark'
-                      ? theme.palette.alphaLight300.main
-                      : darken(theme.palette.white.main, 0.08),
-                },
-                ...menuItemStyles,
-                ...el.styles,
-              }}
+                      ? getContrastAlphaColor(theme, '12%')
+                      : getContrastAlphaColor(theme, '4%'),
+                  '&:hover': {
+                    backgroundColor:
+                      theme.palette.mode === 'dark'
+                        ? theme.palette.alphaLight300.main
+                        : darken(theme.palette.white.main, 0.08),
+                  },
+                  ...menuItemStyles,
+                  ...el.styles,
+                } as SxProps<Theme>
+              }
               showMoreIcon={false}
               prefixIcon={el.prefixIcon}
               onClick={el.onClick}
@@ -139,27 +140,29 @@ export const WalletSelectMenu = ({ handleClose, open }: MenuProps) => {
               showButton={true}
               showMoreIcon={false}
               open={true}
-              styles={{
-                ...menuItemStyles,
-                gridColumn: 'span 3',
-                padding: 0,
-                width: '100%',
-                height: '48px !important',
-                borderRadius: '24px',
-                '> button': {
-                  backgroundColor:
-                    theme.palette.mode === 'dark'
-                      ? getContrastAlphaColor(theme, '12%')
-                      : getContrastAlphaColor(theme, '4%'),
-                },
-                '&:hover': {
-                  backgroundColor: 'transparent',
-                },
+              styles={
+                {
+                  ...menuItemStyles,
+                  gridColumn: 'span 3',
+                  padding: 0,
+                  width: '100%',
+                  height: '48px !important',
+                  borderRadius: '24px',
+                  '> button': {
+                    backgroundColor:
+                      theme.palette.mode === 'dark'
+                        ? getContrastAlphaColor(theme, '12%')
+                        : getContrastAlphaColor(theme, '4%'),
+                  },
+                  '&:hover': {
+                    backgroundColor: 'transparent',
+                  },
 
-                '&:hover button': {
-                  backgroundColor: getContrastAlphaColor(theme, '16%'),
-                },
-              }}
+                  '&:hover button': {
+                    backgroundColor: getContrastAlphaColor(theme, '16%'),
+                  },
+                } as SxProps<Theme>
+              }
               prefixIcon={
                 <Typography
                   variant={'lifiBodyMediumStrong'}

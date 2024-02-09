@@ -1,4 +1,9 @@
-import type { CSSObject, TypographyTypeMap } from '@mui/material';
+import type {
+  CSSObject,
+  SxProps,
+  Theme,
+  TypographyTypeMap,
+} from '@mui/material';
 import { Box, Typography, useTheme } from '@mui/material';
 import type { ReactNode } from 'react';
 import { SpotButton as SpotButtonStyled } from './SpotButton.style';
@@ -9,7 +14,7 @@ interface SpotButtonProps {
   onClick: any;
   typography?: TypographyTypeMap['props']['variant'];
   children: ReactNode;
-  styles?: CSSObject;
+  styles?: SxProps<Theme>;
 }
 
 export const SpotButton = ({

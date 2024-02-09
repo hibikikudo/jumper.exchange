@@ -1,4 +1,4 @@
-import type { CSSObject } from '@mui/material';
+import type { SxProps, Theme } from '@mui/material';
 import { Slide, Typography } from '@mui/material';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import {
@@ -17,7 +17,7 @@ interface MenuProps {
   handleClose: (event: MouseEvent | TouchEvent) => void;
   setOpen: (open: boolean, anchorRef: any) => void;
   cardsLayout?: boolean;
-  styles?: CSSObject;
+  styles?: SxProps<Theme>;
   label?: string;
   open: boolean;
   children: any;
