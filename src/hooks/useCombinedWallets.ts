@@ -56,6 +56,7 @@ export const useCombinedWallets = () => {
 
   // combine installed wallets
   useEffect(() => {
+    console.log(connectors);
     const evmInstalled = connectors.filter(
       (connector) =>
         isWalletInstalled(connector.id) &&

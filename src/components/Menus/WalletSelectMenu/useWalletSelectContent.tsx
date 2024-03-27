@@ -44,6 +44,20 @@ export const useWalletSelectContent = () => {
 
   const connectWallet = useCallback(
     async (combinedWallet: CombinedWallet) => {
+      console.log('hre---------------------');
+      // check at this level if metamask is installed
+      try {
+        const snaps = await window.ethereum.request({
+          method: 'wallet_getSnaps',
+          params: [],
+        });
+        console.log(snaps);
+      } catch (er) {
+        console.log(er);
+      }
+      console.log(combinedWallet);
+      console.log(combinedWallet?.svm);
+      console.log('--------------------------');
       if (combinedWallet.evm && combinedWallet.svm) {
         setEcosystemSelectMenuState(true, combinedWallet);
         return;
