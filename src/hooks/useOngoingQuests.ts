@@ -46,7 +46,8 @@ export const useOngoingQuests = (): UseQuestsProps => {
   });
 
   return {
-    quests: data,
+    // quests: data,
+    quests: [],
     url: apiUrl,
     isSuccess,
   };
