@@ -9,7 +9,7 @@ export default function Page() {
   return (
     <App
       starterVariant="default"
-      activeTheme={activeTheme}
+      activeTheme={activeTheme | 'light'}
       welcomeScreenClosedCookie={welcomeScreenClosed === 'true' ? true : false}
     />
   );

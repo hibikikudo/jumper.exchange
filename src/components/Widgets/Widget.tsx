@@ -17,7 +17,6 @@ import { useTheme } from '@mui/material/styles';
 import { getWalletClient, switchChain } from '@wagmi/core';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { darkTheme } from 'src/theme/theme';
 import { useConfig } from 'wagmi';
 import { WidgetWrapper } from '.';
 import { WidgetSkeleton } from './WidgetSkeleton';
@@ -41,6 +40,7 @@ interface WidgetProps {
 
 export function Widget({ starterVariant }: WidgetProps) {
   const theme = useTheme();
+  console.log('THEME', theme);
   const themeMode = useSettingsStore((state) => state.themeMode);
   const { i18n } = useTranslation();
   const wagmiConfig = useConfig();
@@ -109,7 +109,7 @@ export function Widget({ starterVariant }: WidgetProps) {
           },
           secondary: {
             // FIXME: we need to find out how to use the correct color from the main theme config
-            main: darkTheme.palette.accent2.main,
+            main: theme.palette.accent2.main,
           },
           grey: theme.palette.grey,
         },
@@ -145,20 +145,21 @@ export function Widget({ starterVariant }: WidgetProps) {
       }`,
     };
   }, [
-    starterVariant,
     i18n.language,
     i18n.languages,
-    themeMode,
-    theme.palette.mode,
-    theme.palette.surface2.main,
-    theme.palette.surface1.main,
-    theme.palette.accent1.main,
-    theme.palette.grey,
-    multisigWidget,
+    isGasVariant,
     isMultisigSigner,
     multisigSdkConfig,
-    isGasVariant,
+    multisigWidget,
     setWalletSelectMenuState,
+    starterVariant,
+    theme.palette.accent1.main,
+    theme.palette.accent2.main,
+    theme.palette.grey,
+    theme.palette.mode,
+    theme.palette.surface1.main,
+    theme.palette.surface2.main,
+    themeMode,
     wagmiConfig,
   ]);
 

@@ -10,11 +10,13 @@ export interface BackgroundGradientProps
   className?: string;
 }
 
-export const BackgroundGradientContainer = styled('div')<any>(({ theme }) => ({
+export const BackgroundGradientContainer = styled('div')<{
+  mode: 'light' | 'dark';
+}>(({ theme, mode }) => ({
   position: 'fixed',
   overflow: 'hidden',
   pointerEvents: 'none',
-  background: theme.palette.bg.main,
+  background: theme.palette.bg[mode],
   left: 0,
   bottom: 0,
   right: 0,

@@ -1,5 +1,5 @@
 'use client';
-import type { CSSObject } from '@mui/material';
+import { useColorScheme, type CSSObject } from '@mui/material';
 import {
   BackgroundGradientBottomLeft,
   BackgroundGradientBottomRight,
@@ -12,8 +12,10 @@ interface BackgroundGradientProps {
 }
 
 export const BackgroundGradient = ({ styles }: BackgroundGradientProps) => {
+  const { mode } = useColorScheme();
+
   return (
-    <BackgroundGradientContainer sx={styles}>
+    <BackgroundGradientContainer mode={'light'} sx={styles}>
       <BackgroundGradientBottomLeft />
       <BackgroundGradientBottomRight />
       <BackgroundGradientTopCenter />

@@ -10,12 +10,14 @@ import { EventTrackingTool } from '@/types/userTracking';
 import BrightnessAutoIcon from '@mui/icons-material/BrightnessAuto';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NightlightIcon from '@mui/icons-material/Nightlight';
+import { useColorScheme } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useCookies } from 'react-cookie';
 import { useTranslation } from 'react-i18next';
 
 export const useThemeSwitchTabs = () => {
   const { t } = useTranslation();
+  const { setMode } = useColorScheme();
   const { trackEvent } = useUserTracking();
   const [_, setCookie] = useCookies(['theme']);
   const browserTheme = useMediaQuery('(prefers-color-scheme: dark)')
@@ -35,6 +37,7 @@ export const useThemeSwitchTabs = () => {
     });
     setCookie('theme', mode === 'auto' ? browserTheme : mode, { path: '/' });
     setThemeMode(mode);
+    setMode(mode === 'auto' ? browserTheme : mode);
   };
 
   const output = [
