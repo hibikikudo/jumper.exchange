@@ -12,10 +12,10 @@ interface BackgroundGradientProps {
 }
 
 export const BackgroundGradient = ({ styles }: BackgroundGradientProps) => {
-  const { mode } = useColorScheme();
-
+  const { mode, setMode } = useColorScheme();
+  console.log('MODE', mode);
   return (
-    <BackgroundGradientContainer mode={'light'} sx={styles}>
+    <BackgroundGradientContainer mode={mode || 'light'}>
       <BackgroundGradientBottomLeft />
       <BackgroundGradientBottomRight />
       <BackgroundGradientTopCenter />

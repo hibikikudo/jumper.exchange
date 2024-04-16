@@ -12,6 +12,21 @@ declare module '@mui/material/styles' {
 
   interface Theme {
     shape: Shape;
+    vars: {
+      inputPlaceholder: string;
+      inputUnderline: string;
+      switchTrackDisabled: string;
+      switchTrack: string;
+      overlays: string[];
+      palette: {
+        [key: string]: {
+          [key: string]: string;
+        };
+      };
+      opacity: {
+        [key: string]: string;
+      };
+    };
   }
 
   interface ThemeOptions {
@@ -122,37 +137,6 @@ declare module '@mui/material/styles' {
     lifiBodySmall: React.CSSProperties;
     lifiBodyXSmallStrong: React.CSSProperties;
     lifiBodyXSmall: React.CSSProperties;
-  }
-}
-declare module '@mui/material/Button' {
-  interface ButtonPropsColorOverrides {
-    tertiary: true;
-    white: true;
-    black: true;
-    accent1: true;
-    accent1Alt: true;
-    accent2: true;
-    surface1: true;
-    surface2: true;
-    surface3: true;
-    bg: true;
-    shadow: true;
-    alphaDark100: true;
-    alphaDark200: true;
-    alphaDark300: true;
-    alphaDark400: true;
-    alphaDark500: true;
-    alphaDark600: true;
-    alphaDark700: true;
-    alphaDark800: true;
-    alphaLight100: true;
-    alphaLight200: true;
-    alphaLight300: true;
-    alphaLight400: true;
-    alphaLight500: true;
-    alphaLight600: true;
-    alphaLight700: true;
-    alphaLight800: true;
   }
 }
 declare module '@mui/material/Typography' {
@@ -271,6 +255,7 @@ const basePalette = {
 };
 
 export const theme = extendTheme({
+  // cssVarPrefix: 'mui-test',
   shape: {
     borderRadius: 12,
     borderRadiusSecondary: 8,

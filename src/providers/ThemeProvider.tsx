@@ -1,36 +1,30 @@
 'use client';
 import { useSettingsStore } from '@/stores/settings';
 import type { ThemeModesSupported } from '@/types/settings';
-import { CssBaseline, useMediaQuery } from '@mui/material';
-import {
-  Experimental_CssVarsProvider as CssVarsProvider,
-  getInitColorSchemeScript,
-} from '@mui/material/styles';
+import { getInitColorSchemeScript, useMediaQuery } from '@mui/material';
 import type { PropsWithChildren } from 'react';
-import { theme } from 'src/theme/theme';
 
-export const useDetectDarkModePreference = () => {
+export const useDetectMode = () => {
   const themeMode = useSettingsStore((state) => state.themeMode);
   const isDarkModeHook = useMediaQuery('(prefers-color-scheme: dark)');
 
   if (themeMode === 'dark') {
-    return true;
+    return 'dark';
   } else if (themeMode === 'light') {
-    return false;
+    return 'light';
   } else {
-    return isDarkModeHook;
+    return isDarkModeHook ? 'dark' : 'light';
   }
 };
 
 export const ThemeProvider: React.FC<
   PropsWithChildren<{ theme?: ThemeModesSupported | 'auto' }>
-> = ({ children, theme: themeProp }) => {
-  // const themeMode = useSettingsStore((state) => state.themeMode);
+> = ({ children }) => {
+  const themeMode = useDetectMode();
   // const [theme, setTheme] = useState<ThemeModesSupported | undefined>(
   //   themeProp,
   // );
   // const isDarkMode = useDetectDarkModePreference();
-
   // useEffect(() => {
   //   // Check if the theme prop is not provided (null or undefined)
   //   if (theme === undefined) {
@@ -51,10 +45,13 @@ export const ThemeProvider: React.FC<
 
   // Render children only when the theme is determined
   return (
-    <CssVarsProvider theme={theme} defaultMode="dark">
-      {getInitColorSchemeScript()}
-      <CssBaseline />
+    <>
+      {getInitColorSchemeScript({
+        colorSchemeStorageKey: 'mui-mode',
+        modeStorageKey: 'mui-mode',
+        defaultMode: themeMode,
+      })}
       {children}
-    </CssVarsProvider>
+    </>
   );
 };

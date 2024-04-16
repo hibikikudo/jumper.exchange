@@ -1,11 +1,13 @@
 import { ReactQueryProvider } from '@/providers/ReactQueryProvider';
 import { WalletProvider } from '@/providers/WalletProvider';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
 import Script from 'next/script';
 import type { Viewport } from 'next/types';
 import React from 'react';
 import 'src/fonts/inter.css';
 import { fallbackLng } from 'src/i18n';
+import { theme } from 'src/theme/theme';
 import { metadata as JumperMetadata } from './lib/metadata';
 export const metadata = JumperMetadata;
 
@@ -40,10 +42,12 @@ export default async function RootLayout({
       </head>
 
       <body>
-        <AppRouterCacheProvider>
-          <ReactQueryProvider>
-            <WalletProvider>{children}</WalletProvider>
-          </ReactQueryProvider>
+        <AppRouterCacheProvider options={{ key: 'mui' }}>
+          <CssVarsProvider theme={theme}>
+            <ReactQueryProvider>
+              <WalletProvider>{children}</WalletProvider>
+            </ReactQueryProvider>
+          </CssVarsProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

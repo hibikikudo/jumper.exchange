@@ -6,7 +6,6 @@ import { TabsMap } from '@/const/tabsMap';
 import { useWelcomeScreen } from '@/hooks/useWelcomeScreen';
 import { useActiveTabStore } from '@/stores/activeTab';
 import type { StarterVariantType } from '@/types/internal';
-import type { ThemeModesSupported } from '@/types/settings';
 import type { WidgetSubvariant } from '@lifi/widget';
 import { useCallback, useLayoutEffect, useMemo, useState } from 'react';
 import { Widget } from '.';
@@ -15,15 +14,10 @@ import { WidgetContainer } from './Widgets.style';
 
 interface WidgetsProps {
   widgetVariant: StarterVariantType;
-  activeTheme: ThemeModesSupported | undefined;
   closedWelcomeScreen: boolean;
 }
 
-export function Widgets({
-  widgetVariant,
-  activeTheme,
-  closedWelcomeScreen,
-}: WidgetsProps) {
+export function Widgets({ widgetVariant, closedWelcomeScreen }: WidgetsProps) {
   const { activeTab, setActiveTab } = useActiveTabStore();
   const { welcomeScreenClosed, setWelcomeScreenClosed } =
     useWelcomeScreen(closedWelcomeScreen);

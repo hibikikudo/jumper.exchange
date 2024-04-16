@@ -1,4 +1,3 @@
-'use client';
 import { alpha, darken, styled } from '@mui/material/styles';
 export interface BackgroundGradientContainerProps
   extends Omit<HTMLDivElement, 'children'> {
@@ -11,18 +10,22 @@ export interface BackgroundGradientProps
 }
 
 export const BackgroundGradientContainer = styled('div')<{
-  mode: 'light' | 'dark';
-}>(({ theme, mode }) => ({
-  position: 'fixed',
-  overflow: 'hidden',
-  pointerEvents: 'none',
-  background: theme.palette.bg[mode],
-  left: 0,
-  bottom: 0,
-  right: 0,
-  top: 0,
-  zIndex: -1,
-}));
+  mode: 'light' | 'dark' | 'system';
+}>(({ theme, mode }) => {
+  console.log('Background gradient container', theme, mode);
+
+  return {
+    position: 'fixed',
+    overflow: 'hidden',
+    pointerEvents: 'none',
+    background: (theme.vars || theme).palette.bg.main,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    top: 0,
+    zIndex: -1,
+  };
+});
 
 const BackgroundGradient = styled('span')<any>(({ theme }) => ({
   content: '""',

@@ -1,5 +1,4 @@
 import { ThemeProvider } from '@/providers/ThemeProvider';
-import type { ThemeModesSupported } from '@/types/settings';
 import type { Resource } from 'i18next';
 import { type PropsWithChildren } from 'react';
 import { Layout } from 'src/Layout';
@@ -11,17 +10,15 @@ interface AppProviderProps {
   children: React.ReactNode | JSX.Element;
   i18nResources: Resource;
   lang?: string;
-  theme?: ThemeModesSupported | undefined;
 }
 
 export const AppProvider: React.FC<PropsWithChildren<AppProviderProps>> = ({
   children,
   i18nResources,
-  theme,
   lang,
 }) => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider>
       <TrackingProvider>
         <TranslationsProvider
           namespaces={[defaultNS]}
