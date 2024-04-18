@@ -1,6 +1,7 @@
 import type { BoxProps, Breakpoint } from '@mui/material';
 import { Box, Typography, alpha } from '@mui/material';
 
+import { urbanist } from '@/fonts/fonts';
 import { styled } from '@mui/material/styles';
 import { urbanist } from 'src/fonts/fonts';
 import { IconButtonPrimary } from '../IconButton.style';

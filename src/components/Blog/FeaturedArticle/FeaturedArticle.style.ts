@@ -1,3 +1,4 @@
+import { urbanist } from '@/fonts/fonts';
 import type { BoxProps, Breakpoint, TypographyProps } from '@mui/material';
 import { Box, Skeleton, Typography, lighten } from '@mui/material';
 import { alpha, styled } from '@mui/material/styles';
